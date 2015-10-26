@@ -1,10 +1,22 @@
 {% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
 {% block head_title %}TaskBuster Django Tutorial{% endblock %}
+{% block locales %}
+<div class="col-md-2">
+      <h2 id="local-date">{{today}}</h2>
+      <p>This is the time using your local information </p>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+</div>
+<div class="col-md-2">
+      <h2 id="non-local-date">{{today|unlocalize}}</h2>
+      <p>This is the default time format.</p>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+</div>
+{% endblock %}
 {% block content %}
-    <div class="jumbotron">
-    ...
-    </div>
-    <div class="container">
-    ...
-    </div>
+{% load l10n %}
+<h1>{% trans "Welcome to TaskBuster!"%}</h1>
+<p>{% blocktrans %}TaskBuster is a simple Task manager that helps you organize your daylife. </br> You can create todo lists, periodic tasks and more! </br></br>{% endblocktrans %}</p>
+<p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
 {% endblock %}
