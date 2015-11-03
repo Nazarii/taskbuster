@@ -1,3 +1,5 @@
+from django.core.exceptions import ImproperlyConfigured
+
 """
 Django settings for taskbuster project.
 
@@ -114,3 +116,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
