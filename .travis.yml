@@ -1,1 +1,2 @@
-language: Python
+language: python
+install: "pip install -r requirements.txt"
